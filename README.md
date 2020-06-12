@@ -26,4 +26,4 @@ Visual Studio Code was used to edit a pre-existing code. The once the prompts as
 ## Credits
 
 [Password Generator Demo](https://drive.google.com/file/d/1H3XEhRtDhcyWCks-0w9Z5maE700GJXID/view)
-[GitHub Password Generator Example](https://github.com/Ctucker9233/Password-Generator-JS/blob/master/generator.js)
+[GitHub Password Generator Example](https://github.com/DariaNau/password-generator-js/blob/master/script.js)

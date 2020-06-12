@@ -11,7 +11,6 @@ var passNumbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 var passSpecial = ["!", "@", "#", "$", "%", "^", "&", "*", "-", "=", "_"];
 var totalPassChar = ["passUpperChar" + "passLowerChar" + "passSpecial" + "passNumbers"];
 var randomSet = new Random();
-var passCriteria = [];
 
 //initialize random functions array
 let password = {};
@@ -22,12 +21,13 @@ let totalPassword;
 function generatePassword() {
 
   //prompt to ask how many character user wants for min and max range
-var numberOfChar = parseInt(prompt("Enter a number of character between 8-128"));
-var passwordSet = ""
+var numberOfChar = prompt("Enter a number of character between 8-128");
+var passwordSet = "";
+var passCriteria = [];
 
- if (numberOfChar <=8 && numberOfChar <=128) {
+if (numberOfChar <=8 && numberOfChar <=128) {
    alert("Password length must be between 8-128 characters");
- }
+ 
    
   //prompt to ask what other values they want
     var confirmUpper = confirm("Do you want uppercase letters?");
@@ -35,9 +35,8 @@ var passwordSet = ""
     var confirmNumbers = confirm("Do you want numbers?");
     var confirmSpecial = confirm("Do you want special characters?");
 
-    console.log("All questions asked");
-  // define generators
-    
+    // console.log("All questions asked");
+  
  }
    // add in conditional statements
    if (confirmUpper === true) {
@@ -60,26 +59,26 @@ var passwordSet = ""
        totalPassword += passCriteria.concat(passSpecial);
     }
 
-    console.log("Password so far:" + totalPassword);
+    // console.log("Password so far:" + totalPassword);
     
     //random set of characters must make password
-    if (randomChar !== "") {
+     if (randomChar !== "") {
+       alert("At least one type of character must be selected to create a password. Restart page and start over.");
+     }
+       else{
       for (i = 1; i <= passwordLength; i++) {
           passwordSet= passwordSet + randomChar.charAt(Math.floor(Math.random() * Math.floor((randomChar.length) - 1)));
       }
+    }
+else {
+  ();
+}
 
+  //should display result
       document.getElementById("password").value = passwordString;
 
 
-
-    else {
-      alert("At least one type of character must be used. Refresh page and try again.")
-    }
- 
-  }
-
   
-  //return random char; 
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
