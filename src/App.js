@@ -3,10 +3,11 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {
+  const [passwordState, setPasswordState] = useState("")
+
   const generatePassword = () => {
     let numberOfChar = prompt("Enter a number of character between 8-128");
-    let passwordSet = "";
-    let passCriteria = [];
+
 
     if (numberOfChar < 8 || numberOfChar > 128) {
       alert("Password length must be between 8-128 characters");
@@ -17,9 +18,6 @@ function App() {
     var confirmLower = window.confirm("Do you want lowercase letters?");
     var confirmNumbers = window.confirm("Do you want numbers?");
     var confirmSpecial = window.confirm("Do you want special characters?");
-
-    console.log(confirmUpper)
-    console.log(confirmLower)
 
 
     if (!confirmUpper && !confirmLower && !confirmNumbers && !confirmSpecial) {
@@ -38,11 +36,30 @@ function App() {
     var passSpecial = ["!", "@", "#", "$", "%", "^", "&", "*", "-", "=", "_"];
 
     if (confirmLower) {
-      possibleChar.push() 
+      possibleChar.push(...passLowerChar) 
     }
-  }
+    if (confirmUpper) {
+      possibleChar.push(...passUpperChar)
+    }
+    if (confirmNumbers) {
+      possibleChar.push(...passNumbers)
+    }
+    if (confirmSpecial) {
+      possibleChar.push(...passSpecial)
+    }
 
-  const [password, setPassword] = useState('')
+    var password=""
+    for (let i = 0; i < numberOfChar; i++) {
+      var randIndex = Math.floor(Math.random() * possibleChar.length);
+      password += possibleChar[randIndex];
+
+      setPasswordState(password)
+    }
+
+  } 
+
+ console.log("what is passwordState", passwordState)
+
   return (
     <div className="wrapper">
       <header>
@@ -58,7 +75,7 @@ function App() {
             id="password"
             placeholder="Your Secure Password"
             aria-label="Generated Password"
-            value={password}
+            value={passwordState}
           ></textarea>
         </div>
         <div class="card-footer">
@@ -70,50 +87,3 @@ function App() {
 }
 
 export default App;
-
-//    // add in conditional statements
-//    if (confirmUpper === true) {
-//       var upper = characters()
-//       totalPassword += passCriteria.concat(passUpperChar);
-//      }
-
-//     if (confirmLower === true) {
-//       var lower = characters()
-//       totalPassword += passCriteria.concat(passLowerChar);
-//      }
-
-//     if (confirmNumbers === true) {
-//       var number = numbers()
-//       totalPassword += passCriteria.concat(passNumbers);
-//     }
-    
-//     if (confirmSpecial === true) {
-//       var symbol = symbol()
-//        totalPassword += passCriteria.concat(passSpecial);
-//     }
-
-    // console.log("Password so far:" + totalPassword);
-    
-    //random set of characters must make password
-    //  if (randomChar !== "") {
-    //    alert("At least one type of character must be selected to create a password. Restart page and start over.");
-    //  }
-    //    else{
-    //   for (i = 1; i <= passwordLength; i++) {
-    //       passwordSet= passwordSet + randomChar.charAt(Math.floor(Math.random() * Math.floor((randomChar.length) - 1)));
-    //   }
-//     } else {}
-
-//   //should display result
-//       document.getElementById("password").value = passwordString;
-
-
-  
-// // Write password to the #password input
-// function writePassword() {
-//   var password = generatePassword();
-//   var passwordText = document.querySelector("#password");
-
-//   passwordText.value = password;
-
-// }
